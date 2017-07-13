@@ -1,5 +1,10 @@
 # slider
 
+## Software
+
+Pentru upload cod urmariti tutorialul [Adafruit](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-arduino-ide).
+
+
 ## Hardware
 * [Huzzah](https://www.robofun.ro/huzzah-esp8266)
 * [A4988 Black Edition](https://www.robofun.ro/driver_stepper_a4988)
