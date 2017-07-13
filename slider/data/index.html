@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+        <title>ESP8266 LED controller</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>LED status: <span id='status'></span></h3>
+        <button id='stopButton'>Stop</button>
+        <button id='leftButton'>Left</button>
+        <button id='rightButton'>Right</button>
+        <button id='homeButton'>Home</button>
+        <br>
+        <br>
+        Speed
+        <input id="speedSlider" type="range" min="0" max="5000" value="4000" step="100"  /><span id="range">4000</span>
+        <br>
+        <hr>
+        <br>
+        Photo delay:<input id="photoDelay" type="text" value=""  />sec
+        <br>
+        Photo count:<input id="photoCount" type="text" value=""  />
+        <br>
+        <button id='loopButton'>Loop</button>
+
+
+
+        <script>
+            // A function for making an AJAX request. The response is given
+            // to the callback as a parameter.
+            function makeRequest(action, callback) {
+                var req = new XMLHttpRequest();
+                // Add a unique GET parameter to prevent caching
+                req.open('GET', '/' + action + '?' + Date.now());
+                // Attach the callback if given
+                if (callback !== undefined) {
+                    req.onreadystatechange = function() {
+                        if (req.status === 200) callback(req.responseText);
+                    };
+                }
+                req.send(null);
+            }
+
+
+            function sendSettings(el,prop){
+                var elementValue=document.getElementById(el).value;
+                console.log(prop+':'+elementValue);
+                var req = new XMLHttpRequest();
+                // Add a unique GET parameter to prevent caching
+                req.open('GET', '/settings?'+prop+'='+elementValue+'&' + Date.now());
+                // Attach the callback if given
+
+                req.send(null);
+
+            }
+
+            var statusSpan = document.getElementById('status');
+            function updateStatus(status) {
+                statusSpan.textContent = status;
+            }
+
+            document.getElementById('stopButton').addEventListener('click',
+                function() {
+                makeRequest('stop', updateStatus);
+            });
+
+            document.getElementById('leftButton').addEventListener('click',
+                function() {
+                makeRequest('left', updateStatus);
+            });
+            document.getElementById('rightButton').addEventListener('click',
+                function() {
+                makeRequest('right', updateStatus);
+            });
+            document.getElementById('homeButton').addEventListener('click',
+                function() {
+                makeRequest('home', updateStatus);
+            });
+            document.getElementById('loopButton').addEventListener('click',
+                function() {
+                makeRequest('loop', updateStatus);
+            });
+
+            document.getElementById('speedSlider').addEventListener('change',  function() {
+
+                  sendSettings('speedSlider','speed');
+
+                  document.getElementById("range").innerHTML=document.getElementById('speedSlider').value;
+
+             });
+
+
+            document.getElementById('photoDelay').addEventListener('change',
+                function() {
+                sendSettings('photoDelay','photoDelay');
+            });
+
+
+            document.getElementById('photoCount').addEventListener('change',
+                function() {
+                sendSettings('photoCount','photoCount');
+            });
+
+
+
+
+            makeRequest('status', updateStatus);
+        </script>
+    </body>
+</html>
