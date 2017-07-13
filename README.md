@@ -2,7 +2,7 @@
 
 ## Software
 
-Pentru upload cod urmariti tutorialul [Adafruit](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-arduino-ide).
+Pentru upload urmariti tutorialul [Adafruit](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-arduino-ide).
 
 
 ## Hardware
