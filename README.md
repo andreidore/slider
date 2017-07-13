@@ -6,7 +6,7 @@ Pentru upload urmariti tutorialul [Adafruit](https://learn.adafruit.com/adafruit
 
 
 ## Hardware
-* [Huzzah](https://www.robofun.ro/huzzah-esp8266)
+* [Huzzah ESP8266](https://www.robofun.ro/huzzah-esp8266)
 * [A4988 Black Edition](https://www.robofun.ro/driver_stepper_a4988)
 * [Microintrerupator](https://www.robofun.ro/microintrerupator-endstop)
 * [Axa de precizie](https://www.robofun.ro/mecanice/3d-printer-cnc/Axa_de_precizie_12mm)
